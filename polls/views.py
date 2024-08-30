@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework import viewsets
+from .serializers import AnswerSerializer
+from .models import Answer
 
 # Create your views here.
-
-def index(request):
-  return HttpResponse("Hello")
+class AnswersViewSet(viewsets.ModelViewSet):
+    queryset = Answer.objects.all()
+    serializer_class = AnswerSerializer
